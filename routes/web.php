@@ -16,18 +16,16 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.')->group(function (){
+    Route::get('/', 'DashboardController@index')->name('index');
+    Route::get('/setting', 'SettingController@index')->name('setting.index');
     Route::post('/setting/store', 'SettingController@store')->name('setting.store');
     Route::post('/setting/setwebhook', 'SettingController@setwebhook')->name('setting.setwebhook');
     Route::post('/setting/getwebhookinfo', 'SettingController@getwebhookinfo')->name('setting.getwebhookinfo');
-
-    Route::get('/setting', 'SettingController@index')->name('setting.index');
-
-    Route::get('/', 'DashboardController@index')->name('index');
-
 });
 
 Route::post(Telegram::getAccessToken(), function (){
-    app('App\Http\Controllers\Backend\TelegramController')->webhook();
+//    app('App\Http\Controllers\Backend\TelegramController')->webhook();
+    \Telegram\Bot\Laravel\Facades\Telegram::commandsHandler(true);
 });
 
 Auth::routes();

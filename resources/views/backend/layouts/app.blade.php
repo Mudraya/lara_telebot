@@ -34,11 +34,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li>
-                            <a href="{{ route('admin.index') }}">Dashboard </a>
+                            <a class="navbar-brand" href="{{ route('admin.index') }}">Dashboard </a>
                         </li>
                         <li></li>
                         <li>
-                            <a href="{{ route('admin.setting.index') }}"> Settings</a>
+                            <a class="navbar-brand" href="{{ route('admin.setting.index') }}">Settings</a>
                         </li>
                     </ul>
 
